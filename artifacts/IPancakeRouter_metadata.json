@@ -13,29 +13,20 @@
 						"type": "uint256"
 					},
 					{
-						"internalType": "uint256",
-						"name": "amountOutMin",
-						"type": "uint256"
-					},
-					{
 						"internalType": "address[]",
 						"name": "path",
 						"type": "address[]"
-					},
-					{
-						"internalType": "address",
-						"name": "to",
-						"type": "address"
-					},
-					{
-						"internalType": "uint256",
-						"name": "deadline",
-						"type": "uint256"
 					}
 				],
-				"name": "swapExactTokensForTokensSupportingFeeOnTransferTokens",
-				"outputs": [],
-				"stateMutability": "nonpayable",
+				"name": "getAmountsOut",
+				"outputs": [
+					{
+						"internalType": "uint256[]",
+						"name": "amounts",
+						"type": "uint256[]"
+					}
+				],
+				"stateMutability": "view",
 				"type": "function"
 			}
 		],
@@ -47,12 +38,13 @@
 		"userdoc": {
 			"kind": "user",
 			"methods": {},
+			"notice": "Minimal PancakeSwap V2 router interface",
 			"version": 1
 		}
 	},
 	"settings": {
 		"compilationTarget": {
-			"HopeSwapForward.sol": "IPancakeRouter"
+			"hmtRate.sol": "IPancakeRouter"
 		},
 		"evmVersion": "prague",
 		"libraries": {},
@@ -66,12 +58,12 @@
 		"remappings": []
 	},
 	"sources": {
-		"HopeSwapForward.sol": {
-			"keccak256": "0x4458d5d06f5e507caac7a5345dbe3a244f9e862b5135afbba17ce33ef861ab95",
+		"hmtRate.sol": {
+			"keccak256": "0xa2d11454a5d9df0d14fca302d511870c2073f4ba785bf4f413507a24163090da",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://aec4a5701cd084e09fb9e61e25ae6ad5746813a38aecda2db789b7bf197fd506",
-				"dweb:/ipfs/QmQn2FL73WoMsXRNtv5CNzUR8wpiGHKEBznFyKDPgZ4wN1"
+				"bzz-raw://d22c17135d420740b310388b399c712827495b8863e348243a263f52ca46030c",
+				"dweb:/ipfs/QmR4yfKx3r1nS7gxXrLtTjqAqm6ycV1E4eF3GRki4SEJki"
 			]
 		}
 	},

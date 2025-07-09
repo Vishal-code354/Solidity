@@ -27,19 +27,15 @@ contract HopeSwapForward {
 
     event Swapped(uint256 inAmt, uint256 outAmt);
 
-    constructor(
-        address _router,
-        address _usdt,
-        address _hope,
-        address _wbnb
-    ) {
-        require(_router != address(0) && _usdt != address(0) && _hope != address(0) && _wbnb != address(0), "Zero address not allowed");
-        router = IPancakeRouter(_router);
-        usdt   = IERC20(_usdt);
-        hope   = IERC20(_hope);
-        wbnb   = IERC20(_wbnb);
-        owner  = msg.sender;
-    }
+   constructor(address _router, address _usdt, address _hope, address _wbnb) {
+    require(_router != address(0) && _usdt != address(0) && _hope != address(0) && _wbnb != address(0), "Zero address");
+    router = IPancakeRouter(_router);
+    usdt = IERC20(_usdt);
+    hope = IERC20(_hope);
+    wbnb = IERC20(_wbnb);
+    owner = msg.sender;
+}
+
 
     function swapThenForward(
         uint256 amountIn,
@@ -49,19 +45,18 @@ contract HopeSwapForward {
         require(amountIn > 0, "Zero amountIn");
         require(deadline >= block.timestamp, "Deadline passed");
 
-        // Pull USDT from sender
-        require(usdt.transferFrom(msg.sender, address(this), amountIn), "USDT transferFrom failed");
+        usdt.transferFrom(msg.sender, address(this), amountIn);
+        usdt.approve(address(router), amountIn);
 
-        // Approve router to spend USDT
-        require(usdt.approve(address(router), amountIn), "USDT approve failed");
-
-        // Path: USDT → WBNB → HOPE
+    //  address[] memory path = new address[](2);
+    // path[0] = address(usdt);
+    // path[1] = address(hope);
         address[] memory path = new address[](3);
         path[0] = address(usdt);
-        path[1] = address(wbnb);
+        path[1] = address(wbnb); // <-- Now valid
         path[2] = address(hope);
 
-        // Perform the swap
+
         router.swapExactTokensForTokensSupportingFeeOnTransferTokens(
             amountIn,
             amountOutMin,
@@ -71,10 +66,9 @@ contract HopeSwapForward {
         );
 
         uint256 outAmt = hope.balanceOf(address(this));
-        require(outAmt > 0, "No output tokens received");
+        require(outAmt > 0, "No output");
 
-        // Forward HOPE to owner
-        require(hope.transfer(owner, outAmt), "HOPE transfer failed");
+        hope.transfer(owner, outAmt);
 
         emit Swapped(amountIn, outAmt);
     }

@@ -14,17 +14,12 @@
 					},
 					{
 						"internalType": "address",
-						"name": "_usdt",
+						"name": "_hmtAddress",
 						"type": "address"
 					},
 					{
 						"internalType": "address",
-						"name": "_hope",
-						"type": "address"
-					},
-					{
-						"internalType": "address",
-						"name": "_wbnb",
+						"name": "_usdtAddress",
 						"type": "address"
 					}
 				],
@@ -32,30 +27,11 @@
 				"type": "constructor"
 			},
 			{
-				"anonymous": false,
-				"inputs": [
-					{
-						"indexed": false,
-						"internalType": "uint256",
-						"name": "inAmt",
-						"type": "uint256"
-					},
-					{
-						"indexed": false,
-						"internalType": "uint256",
-						"name": "outAmt",
-						"type": "uint256"
-					}
-				],
-				"name": "Swapped",
-				"type": "event"
-			},
-			{
 				"inputs": [],
-				"name": "hope",
+				"name": "HMT",
 				"outputs": [
 					{
-						"internalType": "contract IERC20",
+						"internalType": "address",
 						"name": "",
 						"type": "address"
 					}
@@ -65,12 +41,44 @@
 			},
 			{
 				"inputs": [],
-				"name": "owner",
+				"name": "USDT",
 				"outputs": [
 					{
 						"internalType": "address",
 						"name": "",
 						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "usdtAmount",
+						"type": "uint256"
+					}
+				],
+				"name": "getHmtForUsdt",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "hmtAmount",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getLiveRate",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
 					}
 				],
 				"stateMutability": "view",
@@ -88,71 +96,40 @@
 				],
 				"stateMutability": "view",
 				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "uint256",
-						"name": "amountIn",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "amountOutMin",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "deadline",
-						"type": "uint256"
-					}
-				],
-				"name": "swapThenForward",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "usdt",
-				"outputs": [
-					{
-						"internalType": "contract IERC20",
-						"name": "",
-						"type": "address"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "wbnb",
-				"outputs": [
-					{
-						"internalType": "contract IERC20",
-						"name": "",
-						"type": "address"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
 			}
 		],
 		"devdoc": {
 			"kind": "dev",
-			"methods": {},
+			"methods": {
+				"constructor": {
+					"params": {
+						"_hmtAddress": "Your HMT token’s BSC address",
+						"_router": "PancakeSwap V2 router (e.g. 0x10ED43C718714eb63d5aA57B78B54704E256024E)",
+						"_usdtAddress": "USDT on BSC (0x55d398326f99059fF775485246999027B3197955)"
+					}
+				},
+				"getHmtForUsdt(uint256)": {
+					"details": "`usdtAmount` must be in USDT’s base units (e.g. to ask for 10 USDT, pass 10 * 10^18)"
+				}
+			},
 			"version": 1
 		},
 		"userdoc": {
 			"kind": "user",
-			"methods": {},
+			"methods": {
+				"getHmtForUsdt(uint256)": {
+					"notice": "How many HMT you get for `usdtAmount` USDT"
+				},
+				"getLiveRate()": {
+					"notice": "Raw HMT amount returned for exactly 1 USDT"
+				}
+			},
 			"version": 1
 		}
 	},
 	"settings": {
 		"compilationTarget": {
-			"HopeSwapForward.sol": "HopeSwapForward"
+			"hmtRate.sol": "HmtPriceConsumer"
 		},
 		"evmVersion": "prague",
 		"libraries": {},
@@ -166,12 +143,12 @@
 		"remappings": []
 	},
 	"sources": {
-		"HopeSwapForward.sol": {
-			"keccak256": "0xe8b52914a628274b90e9db3c39f326312d69dc81cde2d1c5eb59ff0beb12b503",
+		"hmtRate.sol": {
+			"keccak256": "0xa2d11454a5d9df0d14fca302d511870c2073f4ba785bf4f413507a24163090da",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://bd40f056b71cf1ac5f6dfc936708a7697675bd37682ec9762ea0a91717e896a8",
-				"dweb:/ipfs/QmSrDpE1JkcmkNPgtV6EaUmS7X2DpEmodauNHFPekDwjyR"
+				"bzz-raw://d22c17135d420740b310388b399c712827495b8863e348243a263f52ca46030c",
+				"dweb:/ipfs/QmR4yfKx3r1nS7gxXrLtTjqAqm6ycV1E4eF3GRki4SEJki"
 			]
 		}
 	},

@@ -49,107 +49,21 @@
 		},
 		"gasEstimates": null,
 		"methodIdentifiers": {
-			"approve(address,uint256)": "095ea7b3",
-			"balanceOf(address)": "70a08231",
-			"transfer(address,uint256)": "a9059cbb",
-			"transferFrom(address,address,uint256)": "23b872dd"
+			"decimals()": "313ce567"
 		}
 	},
 	"abi": [
 		{
-			"inputs": [
-				{
-					"internalType": "address",
-					"name": "spender",
-					"type": "address"
-				},
-				{
-					"internalType": "uint256",
-					"name": "amt",
-					"type": "uint256"
-				}
-			],
-			"name": "approve",
+			"inputs": [],
+			"name": "decimals",
 			"outputs": [
 				{
-					"internalType": "bool",
+					"internalType": "uint8",
 					"name": "",
-					"type": "bool"
-				}
-			],
-			"stateMutability": "nonpayable",
-			"type": "function"
-		},
-		{
-			"inputs": [
-				{
-					"internalType": "address",
-					"name": "who",
-					"type": "address"
-				}
-			],
-			"name": "balanceOf",
-			"outputs": [
-				{
-					"internalType": "uint256",
-					"name": "",
-					"type": "uint256"
+					"type": "uint8"
 				}
 			],
 			"stateMutability": "view",
-			"type": "function"
-		},
-		{
-			"inputs": [
-				{
-					"internalType": "address",
-					"name": "to",
-					"type": "address"
-				},
-				{
-					"internalType": "uint256",
-					"name": "amt",
-					"type": "uint256"
-				}
-			],
-			"name": "transfer",
-			"outputs": [
-				{
-					"internalType": "bool",
-					"name": "",
-					"type": "bool"
-				}
-			],
-			"stateMutability": "nonpayable",
-			"type": "function"
-		},
-		{
-			"inputs": [
-				{
-					"internalType": "address",
-					"name": "from",
-					"type": "address"
-				},
-				{
-					"internalType": "address",
-					"name": "to",
-					"type": "address"
-				},
-				{
-					"internalType": "uint256",
-					"name": "amt",
-					"type": "uint256"
-				}
-			],
-			"name": "transferFrom",
-			"outputs": [
-				{
-					"internalType": "bool",
-					"name": "",
-					"type": "bool"
-				}
-			],
-			"stateMutability": "nonpayable",
 			"type": "function"
 		}
 	]

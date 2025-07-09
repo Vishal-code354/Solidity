@@ -49,7 +49,7 @@
 		},
 		"gasEstimates": null,
 		"methodIdentifiers": {
-			"swapExactTokensForTokensSupportingFeeOnTransferTokens(uint256,uint256,address[],address,uint256)": "5c11d795"
+			"getAmountsOut(uint256,address[])": "d06ca61f"
 		}
 	},
 	"abi": [
@@ -61,29 +61,20 @@
 					"type": "uint256"
 				},
 				{
-					"internalType": "uint256",
-					"name": "amountOutMin",
-					"type": "uint256"
-				},
-				{
 					"internalType": "address[]",
 					"name": "path",
 					"type": "address[]"
-				},
-				{
-					"internalType": "address",
-					"name": "to",
-					"type": "address"
-				},
-				{
-					"internalType": "uint256",
-					"name": "deadline",
-					"type": "uint256"
 				}
 			],
-			"name": "swapExactTokensForTokensSupportingFeeOnTransferTokens",
-			"outputs": [],
-			"stateMutability": "nonpayable",
+			"name": "getAmountsOut",
+			"outputs": [
+				{
+					"internalType": "uint256[]",
+					"name": "amounts",
+					"type": "uint256[]"
+				}
+			],
+			"stateMutability": "view",
 			"type": "function"
 		}
 	]
